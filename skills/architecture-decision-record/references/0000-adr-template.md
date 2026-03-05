@@ -64,11 +64,15 @@ What are the positive consequences following the chosen option.
 
 What are the negative consequences following the chosen option.
   
+## Notes <!-- optional background information, diagrams, or further hints -->
+
+Additional context, diagrams, or supplementary information.
+
 ## Deciders
 
 List of people or groups that decided this ADR.
 
-## Links <!-- optional links to external information helpful in the context of the ADR -->
+## Links <!-- optional links to external information helpful in the context of the ADR topic -->
 
 * [foo](https://hello.world.com)
 * ...
