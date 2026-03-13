@@ -21,11 +21,13 @@ description: Write and maintain Architecture Decision Records (ADRs) following b
 - when referring to existing local documents/images within markdown syntax, always use the "./" prefix for all relative local paths
 - ADR has a context and a problem statement to frame the topic of the decision
 - ADR provides reasonable information of viable options to decide on
+  - ADR lists at least two alternative options to choose
 - ADR describes what the outcome of the decision is
-- ADR describes what positive consequences result when the decision is effective
-- ADR describes what negative consequences result when the decision is effective
+- ADR decision drivers are addressed by the selected decision
+- ADR may describe what positive consequences result when the decision is effective
+- ADR may describe what negative consequences result when the decision is effective
 - ADR lists persons or groups that decided on the ADR
-  - new ADR uses a placeholder like "FIXME: note the deciders"
+  - new ADR uses a placeholder like "FIXME: note the deciders" or "FIXME: deciders need to be defined"
 - Ensure that the structure of the ADR contains the main topics in the following order ( see the [ADR template](./references/0000-adr-template.md) )
   - **Title**
   - Status and Date appear as bullet points directly below the title, not as a section heading
