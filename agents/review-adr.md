@@ -1,6 +1,6 @@
 ---
 name: review-adrs
-description: Reviews projects architecture decision records to conform to template(s) and check consistency of all targeted ADRs.
+description: Reviews projects architecture decision records to conform to the skill template and check consistency of all targeted ADRs.
 tools: Read, Glob, Grep
 model: sonnet
 skills:
@@ -32,12 +32,14 @@ When invoked follow these steps:
 2. Read and parse each ADR to understand its status, reasoning and decision outcome
 3. For each targeted ADR: apply all structural and quality rules from the
    `architecture-decision-record` skill — report any violations as findings
-4. Additionally check cross-ADR consistency for each targeted ADR:
+4. Read `.markdownlint.json` from the repo root (if present) and flag any violations of the configured rules that can be detected by reading the file content
+5. Additionally check cross-ADR consistency for each targeted ADR:
    - **accepted**: flag contradictions or mutually exclusive approaches with other accepted ADRs
      - These are high-priority findings
    - **draft | proposed**: flag contradictions with existing accepted or WIP ADRs
      - These are low-priority findings
-   - **superseded by**: verify the forward-reference link is present and points to an existing ADR
+   - **superseded by**: verify the forward-reference link (`Superseded by [ADR-YYYY]`) is present in this ADR and points to an existing ADR
+     - Also verify the superseding ADR contains the back-reference (`Supersedes [ADR-XXXX]`) pointing back to this ADR
      - These are low-priority findings — used to verify the supersession chain is complete and links are valid
 
 When reporting findings, order them by ADR numbering.
