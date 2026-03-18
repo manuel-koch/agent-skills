@@ -29,6 +29,7 @@ When invoked follow these steps:
    - These are low-priority findings — the underlying ADR is not yet decided
 6. Ignore ADRs with status = (`rejected` | `deprecated`), these decisions are no longer in effect
 7. ADRs with status = `superseded by` have been revised, use the follow-up / superseding ADRs instead for the review
+   - Follow the supersession chain recursively until you reach an ADR that is not itself superseded — only that ADR is authoritative
    - If the superseding ADR cannot be found, skip current ADR and report a warning
 
 When reporting findings, order them by ADR numbering.

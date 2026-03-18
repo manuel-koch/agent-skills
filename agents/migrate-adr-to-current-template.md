@@ -29,6 +29,8 @@ Only reformat the information found in the ADR:
 - don't change any decision of the ADR
 - don't change any pros/cons or bad/neutral/good points of the ADR
 - don't change spelling, wording or phrasing of any existing content — preserve the original text exactly
+- HTML comments (`<!-- ... -->`) and example placeholder bullets (e.g. `* ...`) in the skill template are guidelines for the AI only — never copy them into the output ADR; when a mandatory section has no content, write `**To be defined**` as the placeholder instead
+- when verifying or correcting the filename slug derived from the ADR title: apply the slug rules defined in the `architecture-decision-record` skill
 
 ## Migration Steps
 
@@ -41,6 +43,7 @@ When invoked follow these steps:
    - reasoning and decision outcome
    - pros/cons of the options
    - consequences of the decision
+   - confirmation criteria
    - additional information
    - added links
 3. For the targeted ADR: use all structural and quality rules from the
@@ -52,7 +55,7 @@ When invoked follow these steps:
 5. If current ADR lacks a front-matter property that is mandatory in the new skill template
    - add the property using the placeholder value defined in the skill template for that property
    - report to the user that you have added a placeholder for the property in the front-matter, so it can be filled with real information later on-demand
-6. When migrating existing front-matter values, replace any legacy placeholder text (e.g. `FIXME`, `TODO`, `TBD`, etc.) with the placeholder value defined in the skill template for that property
+6. When migrating existing front-matter values, replace legacy placeholder text (e.g. `FIXME`, `TODO`, `TBD`) with the placeholder value defined in the skill template for that property — note: `to be defined` is already the correct template placeholder for `decision-makers` in WIP ADRs, so no replacement is needed when that value is already present
 7. Before writing the migrated ADR, read `.markdownlint.json` from the repo root (if present) and enforce consistent list markers as configured
 8. Use the `review-adrs` agent to review the updated ADR
    - only address findings caused by structural/format changes, not content findings

@@ -1,70 +1,112 @@
 ---
 status: <STATUS>            <!-- possible values = (draft | proposed | rejected | accepted | deprecated | superseded by ADR-XXXX ), this is just the status, superseded link will be added to the content of the ADR right below the title, "draft" and "proposed" are WIP states -->
 date: <YEAR>-<MONTH>-<DAY>  <!-- date of status change -->
-decision-makers: to be defined  <!-- may be empty if not decided yet, otherwise correct person/group name here if the current status mandates a valid value, for ADR in WIP status you may use "to be defined" as a placeholder -->
-consulted:                  <!-- may be empty if nobody was consulted, otherwise correct person/group name here if the current status mandates a valid value -->
-informed:                   <!-- may be empty if nobody was informed, otherwise correct person/group name here if the current status mandates a valid value -->
+decision-makers: to be defined  <!-- for WIP statuses (draft, proposed): "to be defined" is the recommended placeholder, or leave empty — both are acceptable; for terminal statuses (rejected, accepted, deprecated, superseded): must contain real names of persons or teams -->
+consulted:                  <!-- VALID: a key present with no value (empty) is correct when nobody was consulted — do NOT flag an empty value as a missing key; only flag when the key itself is absent from the front-matter. This key MUST always be present in the front-matter, even when empty. -->
+informed:                   <!-- VALID: a key present with no value (empty) is correct when nobody was informed — do NOT flag an empty value as a missing key; only flag when the key itself is absent from the front-matter. This key MUST always be present in the front-matter, even when empty. -->
 ---
 
-# A markdown ADR template          <!-- the title of the ADR, will be used in lowercase-dash-pattern for the filename too -->
+# A markdown ADR template          <!-- The title of the ADR, will be used in lowercase-dash-pattern for the filename too -->
 
-<!-- optional: only include ONE of the lines below depending on the ADR's supersession role — omit both otherwise -->
-Superseded by [ADR-XXXX](./xxxx-superseding-adr-name.md).  <!-- use when this ADR was superseded by a newer one -->
-Supersedes [ADR-XXXX](./xxxx-superseded-adr-name.md).      <!-- use when this ADR supersedes an older one -->
+<!--
+Include the applicable line(s) — an ADR in the middle of a supersession chain
+may include both; omit all lines if this ADR has no supersession relationship.
+-->
+Superseded by [ADR-XXXX](./xxxx-superseding-adr-name.md).  <!-- Use when this ADR was superseded by a newer one -->
+Supersedes [ADR-XXXX](./xxxx-superseded-adr-name.md).      <!-- Use when this ADR supersedes an older one -->
 
 ## Context and Problem Statement
 
-<!-- describe the context and the problem that needs to be decided on -->
+<!-- Describe the context and the problem that needs to be decided on. -->
 
 ## Decision Drivers <!-- optional -->
 
+<!--
+Bullets below are examples — replace with real drivers,
+or omit this entire section if none.
+-->
 * e.g. performance or scalability requirement
 * e.g. financial or regulatory requirement
 * ...
 
 ## Considered Options
 
+<!--
+Option names below are examples — replace them with the real option names for this ADR.
+-->
 * Do foo bar on weekdays
 * Do it on a daily basis
 
 ## Decision Outcome
 
+<!--
+"Do foo bar on weekdays" below is an example — replace with the actual
+chosen option name, verbatim from Considered Options.
+-->
 Chosen option: **Do foo bar on weekdays**
 
-<!-- optionally list arguments that lead to the decision -->
+<!-- Optionally list arguments that lead to the decision. -->
 
 ## Consequences
 
-<!-- list the consequences of the decision using Good/Bad, because bullet points -->
-* Good, because
-* Bad, because
+<!--
+List consequences as "Good/Neutral/Bad, because ..." bullet points — include only
+the types that apply; not all three are required. Bullets below are structural
+starters, do NOT copy them; complete each "because" with a real consequence.
+-->
+* Good, because ...
+* Neutral, because ...
+* Bad, because ...
 
 ## Confirmation
 
-<!-- describe observable effects that confirm the decision is working; include tool commands or metrics where applicable -->
+<!--
+Describe observable effects that confirm the decision is working;
+include tool commands, live action observations or metrics where applicable.
+Bullet below is a placeholder, do NOT copy it; write real confirmation criteria.
+-->
 * ...
 
 ## Pros and Cons of the Options
 
-<!-- optionally use a bullet list to list the pros/cons of the options. Use prose sub-headings if more space is needed to describe the pros/cons of the individual options -->
-* Good, because
-* Neutral, because
-* Bad, because
+<!--
+All Good/Neutral/Bad bullet points belong inside the named option sub-headings below.
+Do NOT place bullets before the first sub-heading!
+Include only the types that apply per option; not all (Good/Neutral/Bad) are required for every option.
+Each option sub-heading may optionally include a short description before its bullets.
+-->
 
-### Do foo bar on weekdays <!-- optional -->
+### Do foo bar on weekdays <!-- example heading — replace with the actual option name from Considered Options -->
 
-<!-- provide more verbose information about this option; may include good, neutral or bad effects -->
+<!--
+Provide a short description, example, or reference for this option —
+bullets below are examples, do NOT copy them; replace {argument x} stubs
+with real arguments.
+-->
+* Good, because {argument a}
+* Neutral, because {argument b}
+* Bad, because {argument c}
 
-### Do it on a daily basis <!-- optional -->
+### Do it on a daily basis <!-- example heading — replace with the actual option name from Considered Options -->
 
-<!-- provide more verbose information about this option; may include good, neutral or bad effects -->
+<!--
+Provide a short description, example, or reference for this option —
+bullets below are examples, do NOT copy them; replace {argument x} stubs
+with real arguments.
+-->
+* Good, because {argument d}
+* Neutral, because {argument e}
+* Bad, because {argument f}
 
 ## More Information <!-- optional -->
 
-<!-- add additional context, diagrams, or supplementary information here -->
+<!-- Add additional context, diagrams, or supplementary information here. -->
 
 ## Links <!-- optional -->
 
-<!-- add further external or internal links here -->
+<!--
+Add further external or internal links here — entries below are examples,
+do NOT copy them; replace with real links or omit this entire section if none.
+-->
 * [foo](https://hello.world.com)
 * ...

@@ -41,6 +41,9 @@ When invoked follow these steps:
    - **superseded by**: verify the forward-reference link (`Superseded by [ADR-YYYY]`) is present in this ADR and points to an existing ADR
      - Also verify the superseding ADR contains the back-reference (`Supersedes [ADR-XXXX]`) pointing back to this ADR
      - These are low-priority findings — used to verify the supersession chain is complete and links are valid
+6. Check if sections or bullet points in the ADR contain WIP information
+   e.g. `FIXME`, `TODO`, `TBD`, `to be defined` etc.
+   - report this as according to ADR status and rule in the `architecture-decision-record` skill
 
 When reporting findings, order them by ADR numbering.
 
