@@ -33,6 +33,7 @@ or omit this entire section if none.
 
 <!--
 Option names below are examples — replace them with the real option names for this ADR.
+Option names should just contain plain text and not be formatted in any way ( e.g no markdown links )!
 -->
 * Do foo bar on weekdays
 * Do it on a daily basis
