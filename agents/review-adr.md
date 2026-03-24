@@ -43,7 +43,11 @@ When invoked follow these steps:
      - These are low-priority findings — used to verify the supersession chain is complete and links are valid
 6. Check if sections or bullet points in the ADR contain WIP information
    e.g. `FIXME`, `TODO`, `TBD`, `to be defined` etc.
+   - scan visible content **and** HTML comments (`<!-- ... -->`) — placeholders hidden in comments are findings too
    - report this as according to ADR status and rule in the `architecture-decision-record` skill
+7. Scan for any HTML comments (`<!-- ... -->`) in the ADR body
+   - An HTML comment is a finding unless it is clearly part of an inline code example or snippet that illustrates the ADR topic (e.g. a code block demonstrating a configuration format that happens to use HTML comment syntax)
+   - Authoring hints, reminders, placeholder instructions, or URLs to be replaced are not content — flag them as low-priority findings and suggest converting to visible text or removing the comment entirely
 
 When reporting findings, order them by ADR numbering.
 
