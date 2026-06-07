@@ -32,3 +32,21 @@ documentation files in the project for consistency, duplication, broken links, a
 Checks single-source-of-truth violations, verifies relative links and anchors, reconciles
 contradictions between files, and fixes all findings in place. Iterates until a full pass produces
 zero fixable findings.
+
+## Financial Research Local
+
+**[financial-research-local](./skills/financial-research-local/SKILL.md)** helps search and
+interpret local financial datasets (bank statements, credit card transactions, investment portfolios).
+Guides agents on folder structure navigation, German CSV conventions (semicolon separators, comma
+decimals, date formats), encoding handling, and privacy-safe output formatting. Covers ambiguous
+dates, amount sign conventions, and institution-specific data patterns.
+
+## Product Buying Guide
+
+**[product-buying-guide](./skills/product-buying-guide/SKILL.md)** guides users through informed
+purchase decisions by systematically researching and comparing products. Follows a structured
+workflow: check existing research, define requirements, gather candidates, compare systematically,
+and recommend. Features a language gate (responds in the user's query language), market-specific
+price research (EU-wide coverage with German market focus), total cost of ownership calculations,
+and structured output with citations. Covers professional test sites, price comparison portals,
+and fallback strategies for blocked sources.
