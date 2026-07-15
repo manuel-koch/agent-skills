@@ -15,10 +15,11 @@ reading the original input file or this conversation.
 
 1. Analyze the input/requirements
 2. Search for related info in current project — look for referenced files, configs, docs, tests,
-   existing patterns, and project conventions (e.g. `AGENTS.md`, `CONTRIBUTING.md`, architecture
-   decision records, coding guidelines, style guides) that are relevant to the change. Do not rely on the
-   user input alone; actively read the codebase to ground the plan in reality. Invoke available
-   domain-specific skills (e.g. architecture, security, cloud, Kubernetes, python, go, typescript asf.)
+   existing patterns, and project conventions (e.g. `AGENTS.md`, `CLAUDE.md`, `CONTRIBUTING.md`,
+   architecture decision records, coding guidelines, style guides) that are relevant to the change.
+   Do not rely on the user input alone; actively read the codebase to ground the plan in reality.
+   Invoke available domain-specific skills (e.g. architecture, security, unit-test, e2e-test,
+   integration-test, database, cloud, Kubernetes, python, go, typescript, rust, react, vue asf.)
    when they would deepen the research.
 3. Check input/requirements for consistency
 4. Suggest improvements to the input/requirements
