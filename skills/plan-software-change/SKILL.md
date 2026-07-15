@@ -29,9 +29,19 @@ reading the original input file or this conversation.
 7. Write the output to a sidecar file next to the user's input file. Derive the sidecar name by
    inserting `-plan` before the file extension (e.g. `#123.md` → `#123-plan.md`). Create the
    file if it does not exist; if it already exists, update it in place.
-   Whenever an open question is resolved — whether by the user answering it or by the agent resolving it
-   through its own research — remove the question from the "Open Questions" section, incorporate the
-   answer into "Implementation Hints", and update the plan accordingly.
+
+## Resolving open questions
+
+Whenever an open question is resolved — whether answered by the user or through agent research —
+apply **all** of the following in one update:
+
+1. Remove the question entry from the `❓ Open Questions` section.
+2. Incorporate the answer as a concrete note in `🔧 Implementation hints`.
+3. Update any affected steps in the `🧭 Implementation Plan`.
+4. If no questions remain, remove the **entire** `❓ Open Questions` section, including its
+   heading and all surrounding blank lines.
+5. After every update, ensure the file ends with exactly one newline and contains no trailing
+   blank lines or horizontal rules (`---`) after the last content line.
 
 ## Output format
 
@@ -72,7 +82,5 @@ Omit optional sections when they have no content.
 ## ❓ Open Questions <!-- OPTIONAL — omit section entirely if none remain -->
 
 <!-- Questions that must be resolved before implementation can proceed.
-     Remove a question once resolved — whether answered by the user or
-     by the agent's own research — and move the answer
-     into Implementation hints above. -->
+     Follow the "Resolving open questions" protocol above when closing each one. -->
 ```
