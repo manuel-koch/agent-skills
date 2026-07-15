@@ -27,6 +27,20 @@ Re-read and review the skills for
 While checking the skills, always remember that
 `architecture-decision-record` skill is the canonical ADR validator!
 
+## Plan Software Change skill
+
+Skills related to current topic:
+
+- skills/plan-software-change/SKILL.md
+
+Re-read and review the skill for:
+- whether an agent can understand it
+- whether the output format is unambiguous (skill instructions vs. output template)
+- whether the self-containment requirement for the sidecar plan is clear
+- whether the codebase research step is specific enough
+- report issues
+- propose improvements
+
 Create a `todo.md` with list of issues/proposals per skill
 that can be checkmarked.
 

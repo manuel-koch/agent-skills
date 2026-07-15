@@ -50,3 +50,16 @@ and recommend. Features a language gate (responds in the user's query language),
 price research (EU-wide coverage with German market focus), total cost of ownership calculations,
 and structured output with citations. Covers professional test sites, price comparison portals,
 and fallback strategies for blocked sources.
+
+## Plan Software Change
+
+**[plan-software-change](./skills/plan-software-change/SKILL.md)** creates a structured,
+self-contained implementation plan for introducing new features, fixing bugs, or researching a
+topic. Reads from a user-provided input file (or inline requirements) and writes the plan to a
+sidecar file (e.g. `#123.md` → `#123-plan.md`). Actively searches the codebase for referenced
+files, conventions (`AGENTS.md`, `CONTRIBUTING.md`, ADRs, style guides), and existing patterns to
+ground the plan in reality. Output sections cover Context, Implementation Plan, Proposed
+Improvements (optional), Consistency Issues (optional), Implementation Hints, and Open Questions
+(optional). Open questions are resolved iteratively: answers are removed from the questions list
+and incorporated into Implementation Hints. The plan is designed to be handed off to a fresh agent
+session without any additional context.
