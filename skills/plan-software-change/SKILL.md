@@ -28,9 +28,10 @@ reading the original input file or this conversation.
 6. Create a structured plan how the change can be implemented, incl. necessary changes to the tests or related documentation
 7. Write the output to a sidecar file next to the user's input file. Derive the sidecar name by
    inserting `-plan` before the file extension (e.g. `#123.md` → `#123-plan.md`). Create the
-   file if it does not exist; if it already exists, update it in place. When the user answers
-   open questions, remove the resolved question from the "Open Questions" section, incorporate
-   the answer into "Implementation Hints", and update the plan accordingly.
+   file if it does not exist; if it already exists, update it in place.
+   Whenever an open question is resolved — whether by the user answering it or by the agent resolving it
+   through its own research — remove the question from the "Open Questions" section, incorporate the
+   answer into "Implementation Hints", and update the plan accordingly.
 
 ## Output format
 
@@ -70,6 +71,8 @@ Omit optional sections when they have no content.
 
 ## ❓ Open Questions <!-- OPTIONAL — omit section entirely if none remain -->
 
-<!-- Questions the user must answer before implementation can proceed.
-     Remove a question once answered; move the answer into Implementation hints above. -->
+<!-- Questions that must be resolved before implementation can proceed.
+     Remove a question once resolved — whether answered by the user or
+     by the agent's own research — and move the answer
+     into Implementation hints above. -->
 ```
