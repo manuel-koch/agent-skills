@@ -113,6 +113,11 @@ updating existing documentation affected by the change (README, architecture/API
 ADRs, changelogs, inline doc comments, etc.), referencing the specific doc files.
 A source change that leaves its documentation stale is an incomplete
 change.
+
+Add a task-list checkbox to every numbered step and its sub-steps, using the format
+`1. [ ] Step text`. Note in the plan introduction that an implementing agent must
+flip `[ ]` to `[x]` immediately after completing each step and rewrite the sidecar
+file in place, so progress is resumable across sessions.
 -->
 
 ## Proposed Improvements <!-- OPTIONAL — omit section entirely if none -->
