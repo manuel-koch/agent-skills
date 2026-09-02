@@ -54,6 +54,9 @@ reading the original input file or this conversation.
 7. Write the output to a markdown sidecar file  
    → Output: the assembled sidecar file.  
    The sidecar must contain every section produced above, assembled in the order shown below.
+   Before writing, ensure the **Implementation Plan** steps are numbered consecutively from 1
+   with no gaps or duplicates; if steps were added, removed, or reordered, renumber them while
+   preserving each step's `[ ]`/`[x]` checkbox state.
    After writing, ensure the file ends with exactly one newline and no trailing blank lines or
    `---` rules.
    **Sidecar file naming:**
@@ -78,7 +81,8 @@ step 4:
 
 1. Remove the question entry from the **Open Questions** section.
 2. Incorporate the answer as a concrete note in **Implementation Hints**.
-3. Update any affected steps in the **Implementation Plan**.
+3. Update any affected steps in the **Implementation Plan**, renumbering if steps were
+   inserted or removed so numbering stays consecutive (see renumbering rule below).
 4. Remove the **entire** **Open Questions** section, including its heading
    and all surrounding blank lines.
 
@@ -118,7 +122,12 @@ Add a task-list checkbox to every numbered step and its sub-steps, using the for
 `1. [ ] Step text`. Note in the plan introduction that an implementing agent must
 flip `[ ]` to `[x]` immediately after completing each step and rewrite the sidecar
 file in place, so progress is resumable across sessions.
--->
+
+Keep step numbers consecutive starting at 1, with no gaps or duplicates. Whenever
+steps are inserted, removed, or reordered, renumber the remaining steps and carry
+over each step's existing `[ ]`/`[x]` state — never reset a completed step back to
+`[ ]` during renumbering.
+-->        
 
 ## Proposed Improvements <!-- OPTIONAL — omit section entirely if none -->
 
