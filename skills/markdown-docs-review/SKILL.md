@@ -46,7 +46,8 @@ structured schema) are confirmed during Step 1c when the file is actually read:
 | Signal | Likely role |
 | ------ | ----------- |
 | Named `README.md` at repo root | **Entry point** — developer orientation, prerequisites, index of other docs |
-| Named `CLAUDE.md` at repo root | **AI agent context** — information exclusively useful for AI agents operating in this repo; links out to other docs rather than duplicating them |
+| Named `AGENTS.md` at repo root | **AI agent context** — information exclusively useful for AI agents operating in this repo; links out to other docs rather than duplicating them |
+| Named `CLAUDE.md` at repo root (only when no `AGENTS.md` exists at the repo root; `AGENTS.md` takes precedence) | **AI agent context** — same role as `AGENTS.md` |
 | In a directory named `runbooks/`, `how-to/`, `guides/`, `playbooks/`, or similar | **Operational guide** — task-oriented, one topic per file |
 | In a directory named `docs/`, `documentation/`, `references/`, `architecture/`, or similar (but not a runbooks subdirectory) | **Reference file** — single source of truth for a specific topic; not a step-by-step guide |
 | Follows a structured schema (ADR status/context/decision fields, RFC template, CHANGELOG sections, etc.) | **Skill-governed file** — see Step 1c |
@@ -74,14 +75,17 @@ treat it as skill-governed. All other signal conflicts use the catch-all row.
 When it is unclear which file should own a piece of information, apply these rules in order:
 
 1. **Is it exclusively useful to an AI agent and not to a developer?**
-   If yes → `CLAUDE.md` (or the project's equivalent agent context file). Examples:
+   If yes → `AGENTS.md` at the repo root, or `CLAUDE.md` when no `AGENTS.md` exists (if both
+   exist, `AGENTS.md` takes precedence — do not duplicate the information in both files).
+   Examples:
    machine-readable resource inventories, env var names an agent needs to generate code,
    agent-specific rules with no operational meaning for humans.
    If no → continue to rule 2.
 
 2. **What is its nature?** Place it in the most appropriate existing file:
    * Step-by-step procedure for humans → **operational guide / runbook**
-   * Stable reference material (conventions, architecture, naming rules, data models) → **reference file**
+   * Stable reference material (conventions, architecture, naming rules, data models) →
+     **reference file**
    * Entry-point orientation, prerequisites, or project index → **`README.md`**
    * Anything else (glossary, decision log, meeting notes, changelog without a governing skill,
      etc.) → **reference file** in the most appropriate existing reference directory.
@@ -99,11 +103,15 @@ When it is unclear which file should own a piece of information, apply these rul
 
 Use `Glob` with `**/*.md` to get the full list of markdown files in the repository, then exclude:
 
-* Dependency and build directories: `node_modules/`, `vendor/`, `build/`, and similar generated output folders
-* Generated output directories: any directory that contains committed rendered or compiled artifacts rather than authored content (e.g. `apps-rendered/`, `dist/`, `out/`)
+* Dependency and build directories: `node_modules/`, `vendor/`, `build/`, and similar generated
+  output folders
+* Generated output directories: any directory that contains committed rendered or compiled artifacts
+  rather than authored content (e.g. `apps-rendered/`, `dist/`, `out/`)
 * VCS metadata and ignored paths: `.git/`; also read `.gitignore` if present and exclude any
   directories it names — they are untracked by design and not authored documentation content
-* Tooling configuration directories: `.claude/`, `.agents/` (and all their descendants), and any other hidden directories at the repo root that contain skill, agent, or tool definitions rather than project documentation
+* Tooling configuration directories: `.agents/`, `.claude/`  (and all their descendants), and any
+  other hidden directories at the repo root that contain skill, agent, or tool definitions rather
+  than project documentation
 
 Do not assume a fixed directory structure — projects vary. Run this glob fresh on every pass.
 
@@ -127,19 +135,23 @@ each finding is processed.
 
 ### 1c. Read every file in full
 
-If `CLAUDE.md` exists in the repository, read it before any other file — its conventions inform
-role mapping for all other files. This applies even in scoped runs where `CLAUDE.md` falls
-outside the scope: read it as context but do not fix it and do not add it to the working list.
+If an `AGENTS.md` exists at the repo root, read it before any other file — its conventions
+inform role mapping for all other files. If no `AGENTS.md` exists, read `CLAUDE.md` instead
+(if both exist, `AGENTS.md` takes precedence; do not read `CLAUDE.md` for conventions in that
+case). This applies even in scoped runs where the agent context file falls outside the scope:
+read it as context but do not fix it and do not add it to the working list.
 
 In a scoped run, read other out-of-scope files on demand — only when a specific finding requires
 context from a referenced external file, not speculatively upfront. When reading an out-of-scope
 file, do not fix it and do not collect its diagram references (see Scope section).
 
-Read every remaining file in the working list completely, skipping `CLAUDE.md` if it was
+Read every remaining file in the working list completely, skipping the agent context file
+(`AGENTS.md`, or `CLAUDE.md` when no `AGENTS.md` exists) if it was
 already read above. As you read each file, perform the following:
 
 **Collect sidecar diagram references.** For every link or image reference whose target has a
 textual diagram extension (`.mmd`, `.mermaid`, `.puml`, `.plantuml`, `.svg`, `.drawio`):
+
 * **In a full run or if the diagram is within the scope:** add it to the working list if not
   already present. After finishing the current file, read any newly added diagram files before
   continuing. This ensures all diagram content participates in existence checks and terminology
@@ -149,8 +161,11 @@ textual diagram extension (`.mmd`, `.mermaid`, `.puml`, `.plantuml`, `.svg`, `.d
   diagram references.
 
 Textual diagram formats and the content to extract for terminology checks:
-* **Mermaid** (`.mmd`, `.mermaid`) and fenced ` ```mermaid ` blocks: node names, edge labels, annotations
-* **PlantUML** (`.puml`, `.plantuml`) and fenced ` ```plantuml ` blocks: element names, labels, notes
+
+* **Mermaid** (`.mmd`, `.mermaid`) and fenced ` ```mermaid ` blocks: node names, edge labels,
+  annotations
+* **PlantUML** (`.puml`, `.plantuml`) and fenced ` ```plantuml ` blocks: element names, labels,
+  notes
 * **SVG** (`.svg`): `<text>`, `<title>`, `<desc>`, aria labels
 * **draw.io** (`.drawio`): cell labels and tooltip attributes in the XML
 
@@ -240,6 +255,7 @@ Malformed diagram files and absolute URL issues are report-only — do not attem
 * A version number pinned in a script block or prose contradicts a version stated elsewhere.
 
 **Fix:** Route through Step 3 based on scope:
+
 * Updating command(s) in a script block to match documented procedure → silent fix.
 * Reconciling a contradicted rule across prose files (updating the rule or adding a qualifying
   sentence explaining a known exception with a migration plan) → structural fix.
@@ -280,7 +296,9 @@ If fixing terminology requires moving or restructuring content, use the structur
   unless a reader knows its path directly.
 
 **Exempt from this check:** The following are never flagged as orphaned:
-* `README.md` and `CLAUDE.md` at the repo root — reachable by convention.
+
+* `README.md` and the agent context file (`AGENTS.md`, or `CLAUDE.md` when no `AGENTS.md`
+  exists) at the repo root — reachable by convention.
 * Sidecar diagram files:
   * In a full run: they were added to the working list via a `.md` reference — that reference
     is their inbound link.
@@ -332,6 +350,7 @@ State the file, the issue, and the user's options. Do not make any edit.
 ### Silent fixes — apply without announcing
 
 State the file, line (where applicable), and issue, then apply immediately:
+
 * Correcting a broken or incorrect link path or anchor.
 * Normalizing terminology to match the canonical term.
 * Removing a duplicated passage and replacing it with a link, per the threshold defined in
@@ -341,6 +360,7 @@ State the file, line (where applicable), and issue, then apply immediately:
 
 State what you are about to do, then apply immediately — do not wait for the user to reply,
 but make the action visible:
+
 * Moving a section from one file to another.
 * Creating a new file (e.g. extracting duplicated content into a new runbook or reference file).
 * Deleting a section entirely (rather than replacing it with a link).
@@ -381,6 +401,7 @@ A pass with 0 fixable findings is the signal to stop.
 ## Constraints
 
 ### MUST DO
+
 * Read every file from disk on every pass — never rely on a cached version.
 * Apply fixes per the four paths in Step 3 — do not batch to a separate step.
 * Prefer linking to moving: if information already lives in the right place, link rather than
@@ -389,6 +410,7 @@ A pass with 0 fixable findings is the signal to stop.
 * After every fix, check whether the fix itself introduced a new inconsistency.
 
 ### MUST NOT DO
+
 * Do not add content to a file that does not belong there just to make it "more complete".
 * Do not create a new file unless the content genuinely has no correct home in an existing file.
 * Do not read or check the content of binary image files (`.png`, `.jpg`, `.jpeg`, `.gif`) or

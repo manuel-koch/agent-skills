@@ -36,10 +36,10 @@ zero fixable findings.
 ## Financial Research Local
 
 **[financial-research-local](./skills/financial-research-local/SKILL.md)** helps search and
-interpret local financial datasets (bank statements, credit card transactions, investment portfolios).
-Guides agents on folder structure navigation, German CSV conventions (semicolon separators, comma
-decimals, date formats), encoding handling, and privacy-safe output formatting. Covers ambiguous
-dates, amount sign conventions, and institution-specific data patterns.
+interpret local financial datasets (bank statements, credit card transactions, investment
+portfolios). Guides agents on folder structure navigation, German CSV conventions (semicolon
+separators, comma decimals, date formats), encoding handling, and privacy-safe output formatting.
+Covers ambiguous dates, amount sign conventions, and institution-specific data patterns.
 
 ## Product Buying Guide
 

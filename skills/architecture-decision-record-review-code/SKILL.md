@@ -40,7 +40,8 @@ When reporting findings, order them by ADR numbering. Separate each ADR section 
 Valid severity labels are `[high]` and `[low]`.
 Only include ADRs that have at least one finding; omit ADRs that are fully compliant.
 
-ALWAYS use the following format for each ADR with findings — do NOT use tables or any other structure:
+ALWAYS use the following format for each ADR with findings — do NOT use tables or any other
+structure:
 
 <output-format>
 # ADR-xxxx: ADR title

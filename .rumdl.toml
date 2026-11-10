@@ -1,0 +1,19 @@
+[global]
+# Set global line length (used by MD013 and other line-length rules)
+line-length = 100
+
+[MD013]
+# Don't check line length inside code blocks
+code-blocks = false
+# Let `rumdl fmt` re-wrap long paragraphs to the line length
+reflow = true
+
+# Per-file exclusions for intentional rule violations — keep as narrow as possible.
+[per-file-ignores]
+# ADR template: placeholder link targets (./xxxx-superseding-adr-name.md) do not
+# exist by design, and template example lines exceed the line length.
+"skills/architecture-decision-record/references/0000-a-markdown-adr-template.md" = ["MD013", "MD057"]
+# Output format examples use literal <output-format> placeholder tags, which are
+# intentional inline HTML in the documented output.
+"skills/architecture-decision-record-review-code/SKILL.md" = ["MD033"]
+"skills/architecture-decision-record-review/SKILL.md" = ["MD033"]

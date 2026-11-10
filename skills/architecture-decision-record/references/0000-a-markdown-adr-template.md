@@ -6,14 +6,16 @@ consulted:                  <!-- VALID: a key present with no value (empty) is c
 informed:                   <!-- VALID: a key present with no value (empty) is correct when nobody was informed — do NOT flag an empty value as a missing key; only flag when the key itself is absent from the front-matter. This key MUST always be present in the front-matter, even when empty. -->
 ---
 
-# A markdown ADR template          <!-- The title of the ADR, will be used in lowercase-dash-pattern for the filename too -->
+# A markdown ADR template <!-- The title of the ADR, will be used in lowercase-dash-pattern for the filename too -->
 
 <!--
 Include the applicable line(s) — an ADR in the middle of a supersession chain
 may include both; omit all lines if this ADR has no supersession relationship.
 -->
-Superseded by [ADR-XXXX](./xxxx-superseding-adr-name.md).  <!-- Use when this ADR was superseded by a newer one -->
-Supersedes [ADR-XXXX](./xxxx-superseded-adr-name.md).      <!-- Use when this ADR supersedes an older one -->
+Superseded by
+[ADR-XXXX](./xxxx-superseding-adr-name.md). <!-- Use when this ADR was superseded by a newer one -->
+Supersedes
+[ADR-XXXX](./xxxx-superseded-adr-name.md). <!-- Use when this ADR supersedes an older one -->
 
 ## Context and Problem Statement
 

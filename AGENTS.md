@@ -1,5 +1,11 @@
 # Improving and reviewing the skills
 
+## Formatting gate
+
+After any changes to files in this project, run `make format` as a final gate
+before reporting back. It runs `rumdl fmt` to enforce consistent Markdown
+formatting across the repository.
+
 When ask by user, do a review of the selected skills according to the
 per skill topic guidelines.
 
@@ -13,6 +19,7 @@ Skills related to current topic:
 - skills/architecture-decision-record-review-code/SKILL.md
 
 Re-read and review the skills for
+
 - whether an agent can understand them
 - consistency among all skills
 - report issues
@@ -34,6 +41,7 @@ Skills related to current topic:
 - skills/plan-software-change/SKILL.md
 
 Re-read and review the skill for:
+
 - whether an agent can understand it
 - whether the output format is unambiguous (skill instructions vs. output template)
 - whether the self-containment requirement for the sidecar plan is clear

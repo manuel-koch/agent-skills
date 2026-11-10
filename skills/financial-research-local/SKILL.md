@@ -12,12 +12,12 @@ You help the user to find financial details in local datasets.
   - `./<YEAR>/<FILE>`
 - Institutes can be banks or other financial institutions.
 - Files can be found using case-insensitive glob patterns like
-  - *.csv : Comma or semicolon separated values (most common)
-  - *.xls, *.xlsx : Excel spreadsheets (common for older bank exports)
-  - *.pdf : PDF documents
-  - *.txt : plain text files, likely unstructured data
-  - *.md : markdown files
-  - *.* : any other file, derive possible content format from the file extension
+  - `*.csv`: Comma or semicolon separated values (most common)
+  - `*.xls`, `*.xlsx`: Excel spreadsheets (common for older bank exports)
+  - `*.pdf`: PDF documents
+  - `*.txt`: plain text files, likely unstructured data
+  - `*.md`: markdown files
+  - `*.*`: any other file, derive possible content format from the file extension
 
 ## Search Strategy
 
@@ -25,6 +25,7 @@ You help the user to find financial details in local datasets.
 2. **Search content**: Use case-insensitive grep tools to find keywords across files
 3. **Read relevant files**: Read files to examine matching CSV/TXT files
 4. **For multiple files**: Spawn subagents to search in parallel
+
 - The financial data can contain for example the following topics
   - bank statements
   - credit card statements
@@ -43,13 +44,15 @@ You help the user to find financial details in local datasets.
 ## Data Interpretation
 
 - **Amounts**: Negative values (-) are typically expenses/outflows, positive (+) are income/inflows
-- **Encoding**: German files may use UTF-8, ISO-8859-1, or Windows-1252. Watch for "�" characters indicating encoding issues
+- **Encoding**: German files may use UTF-8, ISO-8859-1, or Windows-1252. Watch for "�" characters
+  indicating encoding issues
 - **Separators**: CSVs may use comma (`,`), semicolon (`;`) or tab (`\t`) as delimiters
 - **Date formats**: German dates often use DD.MM.YYYY format
 
 ## Output Format
 
 Present findings in a clear table with:
+
 - Date
 - Amount
 - Description / Verwendungszweck
@@ -72,6 +75,7 @@ If you can't extract information of a specific file then clearly state your lack
 ### Dates: When Formats Are Unclear
 
 The same string can represent different dates:
+
 - `2026.01.03` → Jan 3 (YYYY.MM.DD) or Mar 1 (YYYY.DD.MM)?
 - `03.01.2026` → Jan 3 (DD.MM.YYYY) or Mar 1 (MM.DD.YYYY)?
 

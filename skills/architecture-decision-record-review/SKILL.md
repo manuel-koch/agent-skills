@@ -71,7 +71,8 @@ When invoked, follow these steps:
 When reporting findings, order them by ADR numbering. Separate each ADR section with `---`.
 Valid severity labels are `[high]` and `[low]`.
 
-ALWAYS use the following format for each ADR with findings — do NOT use tables or any other structure:
+ALWAYS use the following format for each ADR with findings — do NOT use tables or any other
+structure:
 
 <output-format>
 # ADR-xxxx: ADR title

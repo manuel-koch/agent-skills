@@ -12,6 +12,7 @@ and access to the repository must have all the context needed to implement the c
 reading the original input file or this conversation.
 
 **Before writing, verify the plan contains:**
+
 - [ ] The system or component being changed
 - [ ] The goal and motivation for the change
 - [ ] Acceptance criteria or definition of done
@@ -24,8 +25,9 @@ reading the original input file or this conversation.
 2. Research the current project  
    → Output: **Context** (dependencies, contracts) and **Implementation Hints** (grounded facts).
    - Search for related info — referenced files, configs, docs, tests, existing patterns, and
-     project conventions (e.g. `AGENTS.md`, `CLAUDE.md`, `CONTRIBUTING.md`, architecture decision
-     records, coding guidelines, style guides) relevant to the change.
+     project conventions (`AGENTS.md` first when present, otherwise `CLAUDE.md`; also
+     `CONTRIBUTING.md`, `CHANGELOG.md`, `CONTEXT.md`, architecture decision records, coding guidelines,
+     style guides) relevant to the change.
    - Identify existing documentation that describes the components or behavior being changed (e.g.
      README, architecture/API docs, ADRs, changelogs, user guides) so it can be tracked for updates
      in the plan.
@@ -45,9 +47,9 @@ reading the original input file or this conversation.
    → Output: **Consistency Issues** (optional — omit section if none).  
    "Consistency issues" are contradictions or conflicts with existing invariants that the planned
    change would introduce or silently rely on. Prefix each entry with `[high]` if it blocks
-   implementation, or `[low]` if it can be resolved during implementation. Keep them distinct
-   from the "Implementation Plan" (concrete steps) and "Implementation Hints" (grounded facts)
-   and non-redundant with both. See the Output Format template for what counts as a consistency issue.
+   implementation, or `[low]` if it can be resolved during implementation. Keep them distinct from
+   the "Implementation Plan" (concrete steps) and "Implementation Hints" (grounded facts) and
+   non-redundant with both. See the Output Format template for what counts as a consistency issue.
 6. Note open questions, unclear requirements, implications for security or topics that need
    clarification before implementation and/or planning can start  
    → Output: **Open Questions** (optional — omit section if none remain).

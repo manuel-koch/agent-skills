@@ -16,9 +16,9 @@ recommendation labels, file names, everything. Do not mix languages.
 - **If the user wrote in English:** every character you output must be English.
   Section headings: Pros, Cons, Best overall, Best value, Key specs, Sources, etc.
   File name suffix: `-buying-guide.md`
-- **If the user wrote in German:** everything in German.
-  Section headings: Vorteile, Nachteile, Bester Gesamtsieger, Preis-Leistungs-Tipp, Wichtige Daten, Quellen, etc.
-  File name suffix: `-kaufberatung.md`
+- **If the user wrote in German:** everything in German. Section headings: Vorteile, Nachteile,
+  Bester Gesamtsieger, Preis-Leistungs-Tipp, Wichtige Daten, Quellen, etc. File name suffix:
+  `-kaufberatung.md`
 - **Other languages:** follow the same pattern — match the user's language fully.
 
 **Why this matters:** This skill contains extensive German/EU market data. That data is
@@ -29,8 +29,8 @@ Your response language is determined exclusively by the user's query language.
 
 ---
 
-You help users make informed purchase decisions by systematically researching and comparing products.
-This skill prevents impulse decisions, choice paralysis, and missing better alternatives.
+You help users make informed purchase decisions by systematically researching and comparing
+products. This skill prevents impulse decisions, choice paralysis, and missing better alternatives.
 
 ## When to Use
 
@@ -55,14 +55,15 @@ This skill prevents impulse decisions, choice paralysis, and missing better alte
 
 ## Core Workflow
 
-Always follow these phases in order. Do not skip to a recommendation without completing earlier phases.
+Always follow these phases in order. Do not skip to a recommendation without completing earlier
+phases.
 
 ---
 
 ### Phase 0: Check for Existing Research
 
-Before starting new research, look for an existing buying-guide document in the current working directory
-(or the user's active project directory) that matches the current topic.
+Before starting new research, look for an existing buying-guide document in the current working
+directory (or the user's active project directory) that matches the current topic.
 
 **What to look for:**
 
@@ -106,7 +107,8 @@ Before researching anything, clarify what the user actually needs.
 
 **What to establish:**
 
-1. **Market / Region** — Which market / region is the user's preferred shopping area (Germany, Europe, US, etc.)
+1. **Market / Region** — Which market / region is the user's preferred shopping area (Germany,
+   Europe, US, etc.)
 2. **Budget range** — Hard ceiling and ideal price point
 3. **Primary use case** — What will it be used for 80% of the time?
 4. **Must-have features** — Dealbreakers if absent
@@ -116,14 +118,17 @@ Before researching anything, clarify what the user actually needs.
 
 **Action:**
 
-1. Ask probing questions first. Don't assume — only proceed to gathering candidates after user confirms their requirements.
-2. Once requirements are clear, do quick category research if needed to refine options or understand jargon.
-3. Try to narrow the products by asking further questions on available technologies based on the kind of product
-   the user is looking for.
-4. Provide key technologies that separate products or provide distinct features or have high influence on pricing.
+1. Ask probing questions first. Don't assume — only proceed to gathering candidates after user
+   confirms their requirements.
+2. Once requirements are clear, do quick category research if needed to refine options or understand
+   jargon.
+3. Try to narrow the products by asking further questions on available technologies based on the
+   kind of product the user is looking for.
+4. Provide key technologies that separate products or provide distinct features or have high
+   influence on pricing.
 5. Research the product category to understand key terminology and differentiating features
    — you need to know what specs matter before you can compare them. This helps you ask better
-     questions and narrow options by technology.
+   questions and narrow options by technology.
 
 **Example questions to ask the user:**
 
@@ -164,8 +169,8 @@ Find the top contenders in the category matching the user's requirements.
    - Manufacturer's official product page (preferred — most accurate)
    - Major retailer product pages (for pricing + customer Q&A)
 
-**Quality rule:** Always verify specifications against the manufacturer's own site, not just third-party summaries.
-Third parties get specs wrong frequently.
+**Quality rule:** Always verify specifications against the manufacturer's own site, not just
+third-party summaries. Third parties get specs wrong frequently.
 
 **Check freshness:** Note the date of any review or pricing you reference.
 Review content older than 12 months should be flagged.
@@ -186,14 +191,16 @@ Build a structured comparison once you have sufficient data.
 
 **Always calculate:**
 
-- **Total cost of ownership (TCO)** — Include accessories (cables, mounts, cases), subscription fees,
-  consumables (ink, filters, blades), extended warranty costs
-- **Hidden costs** — Does it need a separate purchase to work? (e.g., missing cables, required dongles,
-  proprietary accessories)
-- **Sale timing** — Is the product near a refresh cycle? Is there a known upcoming sale (Prime Day, Black Friday)?
+- **Total cost of ownership (TCO)** — Include accessories (cables, mounts, cases), subscription
+  fees, consumables (ink, filters, blades), extended warranty costs
+- **Hidden costs** — Does it need a separate purchase to work? (e.g., missing cables, required
+  dongles, proprietary accessories)
+- **Sale timing** — Is the product near a refresh cycle? Is there a known upcoming sale (Prime Day,
+  Black Friday)?
 
 **Output:** Present the comparison using the template in the "## Output Format" section below.
-Include citations for every source (prices, reviews, spec pages) — see the Citations rule in that section.
+Include citations for every source (prices, reviews, spec pages) — see the Citations rule in that
+section.
 
 ---
 
@@ -225,11 +232,18 @@ the Language Gate at the top of this skill:
 The code block below ( "Template" section ) is your output blueprint, not literal text!
 Everything in it is an instruction for you, the agent!
 
-- **Curly-brace placeholders** like `{topic}`, `{Product A}`, `{price range}` — substitute with the real value. Do not output the braces.
-- **Descriptive hints in curly braces** like `{bullet points from aggregated reviews of product A}`, `{3-5 most relevant specs}`, `{annual/3-year total}` — these describe what content to produce at that position. Read them as guidance, execute the instruction, and output the result (without the placeholder text).
-- **Section headings in curly braces** like `{Pros}`, `{Cons}`, `{Best for}` — also placeholders; replace them with the localized heading (see Localization below).
-- **Text outside curly braces** (e.g. `#`, `##`, `###`, `- `, `|`) — structural markdown that structures your output; keep it as-is.
-- **XML comments** (e.g. `<!-- Agent hint: ... -->`) — guidance for you, the agent. Read them as instructions, never output the comment text or the `<!-- -->` syntax literally.
+- **Curly-brace placeholders** like `{topic}`, `{Product A}`, `{price range}` — substitute with the
+  real value. Do not output the braces.
+- **Descriptive hints in curly braces** like `{bullet points from aggregated reviews of product A}`,
+  `{3-5 most relevant specs}`, `{annual/3-year total}` — these describe what content to produce at
+  that position. Read them as guidance, execute the instruction, and output the result (without the
+  placeholder text).
+- **Section headings in curly braces** like `{Pros}`, `{Cons}`, `{Best for}` — also placeholders;
+  replace them with the localized heading (see Localization below).
+- **Text outside curly braces** (e.g. `#`, `##`, `###`, `- `, `|`) — structural markdown that
+  structures your output; keep it as-is.
+- **XML comments** (e.g. `<!-- Agent hint: ... -->`) — guidance for you, the agent. Read them as
+  instructions, never output the comment text or the `<!-- -->` syntax literally.
 
 In short: everything inside the code block tells you what to write!
 Write the actual content, not the instruction!
@@ -267,13 +281,14 @@ by users"), note which source that came from. This lets the user verify your res
   - English: `2026-05-26-{topic}-buying-guide.md`
   - German: `2026-05-26-{topic}-kaufberatung.md`
   - French: `2026-05-26-{topic}-guide-d-achat.md`
-  - Other languages: derive by analogy, or ask the user.
-  **Always use the actual current date**, not a placeholder — run `date +%Y-%m-%d` if you're uncertain.
-- If you can only respond in the chat, include the full markdown in your response with a code-fenced block
+  - Other languages: derive by analogy, or ask the user. **Always use the actual current date**, not
+    a placeholder — run `date +%Y-%m-%d` if you're uncertain.
+- If you can only respond in the chat, include the full markdown in your response with a code-fenced
+  block
 - When in doubt, ask the user where they'd like the file saved
-- **Important:** When telling the user where the file was saved, state the *actual absolute path* you
-  wrote to (not a template or guessed path). Do not use `/home/user/...`, `~/...`, or any generic
-  placeholder — read back the real path from the write operation.
+- **Important:** When telling the user where the file was saved, state the *actual absolute path*
+  you wrote to (not a template or guessed path). Do not use `/home/user/...`, `~/...`, or any
+  generic placeholder — read back the real path from the write operation.
 
 ### Template
 
@@ -436,18 +451,24 @@ Check these markets in priority order:
    discontinued, or had quality changes. Check the date.
 5. **Comparing across price tiers unfairly** — Don't ding a budget product for missing features
    that only exist in the premium tier.
-6. **Review sampling bias** — Users with problems are more motivated to leave reviews than happy customers.
-   Look at patterns, not individual reviews.
+6. **Review sampling bias** — Users with problems are more motivated to leave reviews than happy
+   customers. Look at patterns, not individual reviews.
 7. **Ignoring ecosystem lock-in** — A product that works great alone but poorly with the user's
    existing setup might be a worse choice than an inferior standalone product that integrates well.
 
 ### Workaround: `site:` Operator on Brave Search (Primary)
 
-When price-comparison sites (geizhals.de, idealo.de, etc.) are blocked by Cloudflare, use the `site:` operator on **Brave Search** as a workaround. A query like `{product_name} site:geizhals.de` returns geizhals.de product pages with prices directly in the search-result snippet — no need to load the blocked site itself. Brave Search's independent index is less aggressive with bot detection than Google/DuckDuckGo/Bing/Startpage, making this a reliable first-line fallback (verified May 2026).
+When price-comparison sites (geizhals.de, idealo.de, etc.) are blocked by Cloudflare, use the
+`site:` operator on **Brave Search** as a workaround. A query like `{product_name} site:geizhals.de`
+returns geizhals.de product pages with prices directly in the search-result snippet — no need to
+load the blocked site itself. Brave Search's independent index is less aggressive with bot detection
+than Google/DuckDuckGo/Bing/Startpage, making this a reliable first-line fallback (verified May
+2026).
 
 ### Workaround: `site:` Operator via `ddgs` (Secondary)
 
-If Brave Search is unavailable, use the `ddgs` CLI with the `site:` operator as a secondary fallback. The `ddgs` CLI must be installed (`pip install ddgs`) and verified (`command -v ddgs`).
+If Brave Search is unavailable, use the `ddgs` CLI with the `site:` operator as a secondary
+fallback. The `ddgs` CLI must be installed (`pip install ddgs`) and verified (`command -v ddgs`).
 
 ```bash
 # Works — returns geizhals.de product pages with prices in snippets
@@ -459,14 +480,22 @@ ddgs text -q "RTX 5090 site:geizhals.de" -m 5
 ```
 
 **Caveats:**
-- **Avoid `-o json`** — it returns empty for `site:geizhals.de` queries. Use the default text output and parse manually.
-- **Rate limiting** — DuckDuckGo throttles faster than Brave. If a query returns empty, wait a few seconds and retry, or fall back to the next method.
-- **Not a primary replacement** — Brave Search is more reliable. Use `ddgs` only when Brave Search is unavailable or returns insufficient results.
-- **Litters CWD with files** — When using `-o json`, `ddgs` writes timestamped output files (`text_{query}_{timestamp}.json`) to the CWD. Since `-o json` is broken for `site:geizhals.de` queries anyway, this is mostly a non-issue — but if you ever use `-o json` for other queries, run from a temp directory or clean up afterwards.
+
+- **Avoid `-o json`** — it returns empty for `site:geizhals.de` queries. Use the default text output
+  and parse manually.
+- **Rate limiting** — DuckDuckGo throttles faster than Brave. If a query returns empty, wait a few
+  seconds and retry, or fall back to the next method.
+- **Not a primary replacement** — Brave Search is more reliable. Use `ddgs` only when Brave Search
+  is unavailable or returns insufficient results.
+- **Litters CWD with files** — When using `-o json`, `ddgs` writes timestamped output files
+  (`text_{query}_{timestamp}.json`) to the CWD. Since `-o json` is broken for `site:geizhals.de`
+  queries anyway, this is mostly a non-issue — but if you ever use `-o json` for other queries, run
+  from a temp directory or clean up afterwards.
 
 ## Verification Checklist
 
-- [ ] Checked for existing buying-guide documents in CWD / active project directory before researching
+- [ ] Checked for existing buying-guide documents in CWD / active project directory before
+      researching
 - [ ] User's budget, use case, and must-have features confirmed
 - [ ] At least 3 independent research sources consulted
 - [ ] Manufacturer specs verified (not just third-party summaries)
@@ -480,106 +509,119 @@ ddgs text -q "RTX 5090 site:geizhals.de" -m 5
 
 ## Known sites for price query by region / market (ordered by priority)
 
-Sites marked with ** are primary (most reliable for prices). Gather prices from these sites using your available means.
+Sites marked with ** are primary (most reliable for prices). Gather prices from these sites using
+your available means.
 
 If the user does not specify a region, default to German and EU markets (DE/AT/CH core).
 
 ### Germany
 
-- **https://www.geizhals.de** — Best for tech/electronics: detailed filters, price history charts, merchant ratings
-- **https://www.idealo.de** — Broadest product coverage (tech, household, fashion, sports)
-- https://www.billiger.de — Strong for large appliances and home goods
-- https://www.check24.de — Excellent for insurance/finance, also electronics and travel
-- https://www.preis.de — General price comparison, good for niche products
-- https://www.preisvergleich.de — Solid fallback, covers many categories
-- https://www.guenstiger.de — Good for home/garden and DIY
-- https://www.mydealz.de — Community deal sharing (not automated prices, but great for spotting sales)
+- **<https://www.geizhals.de>** — Best for tech/electronics: detailed filters, price history charts,
+  merchant ratings
+- **<https://www.idealo.de>** — Broadest product coverage (tech, household, fashion, sports)
+- <https://www.billiger.de> — Strong for large appliances and home goods
+- <https://www.check24.de> — Excellent for insurance/finance, also electronics and travel
+- <https://www.preis.de> — General price comparison, good for niche products
+- <https://www.preisvergleich.de> — Solid fallback, covers many categories
+- <https://www.guenstiger.de> — Good for home/garden and DIY
+- <https://www.mydealz.de> — Community deal sharing (not automated prices, but great for spotting
+  sales)
 
 ### Austria
 
-- **https://www.geizhals.at** — Same engine as geizhals.de, prices in EUR from Austrian retailers
-- https://www.idealo.at — Austrian market prices
-- https://www.billiger.at — Austrian-focused deals
+- **<https://www.geizhals.at>** — Same engine as geizhals.de, prices in EUR from Austrian retailers
+- <https://www.idealo.at> — Austrian market prices
+- <https://www.billiger.at> — Austrian-focused deals
 
 ### Switzerland
 
-- **https://www.toppreise.ch** — Best Swiss price comparison (tech, appliances)
-- https://www.comparis.ch — Insurance, finance, telecom, also product comparison
+- **<https://www.toppreise.ch>** — Best Swiss price comparison (tech, appliances)
+- <https://www.comparis.ch> — Insurance, finance, telecom, also product comparison
 
 ### UK
 
-- **https://www.hotukdeals.com** — Community deal aggregation, best for finding current sales
-- https://www.pricespy.co.uk — Price comparison across UK retailers
-- https://www.pricerunner.co.uk — UK-focused price comparison engine
-- https://www.camelcamelcamel.com — Amazon price history tracker (UK and worldwide)
-- https://www.keepa.com — Amazon price tracker with browser plugin (covers .co.uk + .de + .fr + .it + .es)
+- **<https://www.hotukdeals.com>** — Community deal aggregation, best for finding current sales
+- <https://www.pricespy.co.uk> — Price comparison across UK retailers
+- <https://www.pricerunner.co.uk> — UK-focused price comparison engine
+- <https://www.camelcamelcamel.com> — Amazon price history tracker (UK and worldwide)
+- <https://www.keepa.com> — Amazon price tracker with browser plugin (covers .co.uk + .de + .fr +
+  .it + .es)
 
 ### Netherlands
 
-- **https://tweakers.net/pricewatch/** — Top-tier tech price comparison with reviews (NL)
-- **https://www.idealo.nl** — Broad Dutch price comparison
-- https://www.kieskeurig.nl — General comparison site for Netherlands
+- **<https://tweakers.net/pricewatch/>** — Top-tier tech price comparison with reviews (NL)
+- **<https://www.idealo.nl>** — Broad Dutch price comparison
+- <https://www.kieskeurig.nl> — General comparison site for Netherlands
 
 ### France
 
-- **https://www.idealo.fr** — French market prices
-- https://www.dealabs.com — Community deal sharing (hotukdeals equivalent for France)
-- https://www.prix.net — French price comparison (when accessible)
+- **<https://www.idealo.fr>** — French market prices
+- <https://www.dealabs.com> — Community deal sharing (hotukdeals equivalent for France)
+- <https://www.prix.net> — French price comparison (when accessible)
 
 ### Italy
 
-- **https://www.idealo.it** — Italian market prices
-- https://www.trovaprezzi.it — Italian price comparison engine
+- **<https://www.idealo.it>** — Italian market prices
+- <https://www.trovaprezzi.it> — Italian price comparison engine
 
 ### Spain
 
-- **https://www.idealo.es** — Spanish market prices
+- **<https://www.idealo.es>** — Spanish market prices
 
 ### Poland
 
-- **https://www.ceneo.pl** — Leading Polish price comparison engine
-- https://www.skapiec.pl — Polish comparison site, good alternative
+- **<https://www.ceneo.pl>** — Leading Polish price comparison engine
+- <https://www.skapiec.pl> — Polish comparison site, good alternative
 
 ### Czech Republic / Slovakia
 
-- **https://www.heureka.cz** — Czech price comparison with user reviews
-- https://www.heureka.sk — Slovak version
+- **<https://www.heureka.cz>** — Czech price comparison with user reviews
+- <https://www.heureka.sk> — Slovak version
 
 ### Greece
 
-- **https://www.skroutz.gr** — Dominant Greek price comparison site (tech-heavy but broad)
+- **<https://www.skroutz.gr>** — Dominant Greek price comparison site (tech-heavy but broad)
 
 ### Nordics
 
-- **https://www.prisjakt.no** — Norwegian price comparison
-- **https://www.prisjakt.se** — Swedish price comparison
-- https://www.hinta.fi — Finnish price comparison
-- https://www.hintaopas.fi — Alternative Finnish comparison
+- **<https://www.prisjakt.no>** — Norwegian price comparison
+- **<https://www.prisjakt.se>** — Swedish price comparison
+- <https://www.hinta.fi> — Finnish price comparison
+- <https://www.hintaopas.fi> — Alternative Finnish comparison
 
 ### Romania
 
-- https://www.price.ro — Romanian price comparison (basic but useful)
+- <https://www.price.ro> — Romanian price comparison (basic but useful)
 
 ### Pan-European / Worldwide
 
-- **https://www.camelcamelcamel.com** — Amazon price history across .de, .co.uk, .fr, .it, .es, .com
-- **https://www.keepa.com** — Amazon price tracker with multi-market coverage (DE, UK, FR, IT, ES, US)
-- https://www.shopping.google.com — Google Shopping (worldwide, set country filter)
-- Direct Amazon search across EU domains: amazon.de, amazon.fr, amazon.it, amazon.es, amazon.nl, amazon.co.uk
+- **<https://www.camelcamelcamel.com>** — Amazon price history across .de, .co.uk, .fr, .it, .es,
+  .com
+- **<https://www.keepa.com>** — Amazon price tracker with multi-market coverage (DE, UK, FR, IT, ES,
+  US)
+- <https://www.shopping.google.com> — Google Shopping (worldwide, set country filter)
+- Direct Amazon search across EU domains: amazon.de, amazon.fr, amazon.it, amazon.es, amazon.nl,
+  amazon.co.uk
 
 ### Notes on price query technique
 
-- Always check geizhals.de first for tech/electronics — it has the most detailed price history and merchant filtering
+- Always check geizhals.de first for tech/electronics — it has the most detailed price history and
+  merchant filtering
 - Cross-reference at least 2 price sites to catch outliers
 - Check Amazon and the manufacturer's own store for direct pricing
-- For deal-tracking sites like mydealz.de, hotukdeals.com, dealabs.com: use them to find recent sales, not baseline pricing
-- Keepa and camelcamelcamel show Amazon price history — use these to determine if current price is actually a deal
-- When comparing across EU markets, note that prices shown may include/exclude VAT at different rates (DE 19%, AT 20%, UK 20%, CH 8.1%)
-- Some sites block automated HTTP requests — if one method fails, try an alternative price portal or direct retailer search (see below)
+- For deal-tracking sites like mydealz.de, hotukdeals.com, dealabs.com: use them to find recent
+  sales, not baseline pricing
+- Keepa and camelcamelcamel show Amazon price history — use these to determine if current price is
+  actually a deal
+- When comparing across EU markets, note that prices shown may include/exclude VAT at different
+  rates (DE 19%, AT 20%, UK 20%, CH 8.1%)
+- Some sites block automated HTTP requests — if one method fails, try an alternative price portal or
+  direct retailer search (see below)
 
 ### When primary price portals are blocked
 
-If Geizhals, Idealo, or other major price portals block automated requests, fall back to these in order:
+If Geizhals, Idealo, or other major price portals block automated requests, fall back to these in
+order:
 
 1. **Direct retailer search** — Fetch prices from major retailer product pages directly:
    - `https://www.amazon.de/s?k={model}` — search results with prices
@@ -588,98 +630,142 @@ If Geizhals, Idealo, or other major price portals block automated requests, fall
    - `https://www.notebooksbilliger.de/{model}` — specialist tech retailer
    - `https://www.conrad.de/search?search={model}` — Conrad DE
 
-2. **`ddgs` CLI with `site:` operator** — If `ddgs` is installed (`command -v ddgs`), use it to query geizhals.de via DuckDuckGo's index:
+2. **`ddgs` CLI with `site:` operator** — If `ddgs` is installed (`command -v ddgs`), use it to
+   query geizhals.de via DuckDuckGo's index:
+
    ```bash
    ddgs text -q "{model} site:geizhals.de" -m 5
    ```
-   Prices appear in the search-result snippets. **Avoid `-o json`** — it returns empty for `site:geizhals.de` queries (serialization issue with special characters) and also dumps timestamped output files (`text_*.json`) to the CWD. Use the default text output and parse manually. DuckDuckGo may rate-limit; retry after a few seconds if empty.
 
-3. **Google Shopping** — `https://shopping.google.com/search?q={model}+preis` — set country filter to Germany. Often accessible when price portals block automation.
+   Prices appear in the search-result snippets. **Avoid `-o json`** — it returns empty for
+   `site:geizhals.de` queries (serialization issue with special characters) and also dumps
+   timestamped output files (`text_*.json`) to the CWD. Use the default text output and parse
+   manually. DuckDuckGo may rate-limit; retry after a few seconds if empty.
 
-4. **Keepa / camelcamelcamel** — `https://keepa.com/#!product/search` or search on camelcamelcamel. These track Amazon prices via APIs that are more accessible.
+3. **Google Shopping** — `https://shopping.google.com/search?q={model}+preis` — set country filter
+   to Germany. Often accessible when price portals block automation.
 
-5. **Manual search fallback** — If all automated methods fail, be honest and tell the user specifically where to check: "I couldn't fetch prices automatically for {product}. You can check current prices at [specific retailer URL]." Do not fabricate price ranges.
+4. **Keepa / camelcamelcamel** — `https://keepa.com/#!product/search` or search on camelcamelcamel.
+   These track Amazon prices via APIs that are more accessible.
+
+5. **Manual search fallback** — If all automated methods fail, be honest and tell the user
+   specifically where to check: "I couldn't fetch prices automatically for {product}. You can check
+   current prices at [specific retailer URL]." Do not fabricate price ranges.
 
 ### General price-fetching rules
 
 - Never output a price you haven't verified in this session — stale prices harm users
-- If you cannot get current prices, say so explicitly and point to specific retailer URLs, rather than citing unavailable data
+- If you cannot get current prices, say so explicitly and point to specific retailer URLs, rather
+  than citing unavailable data
 
 ## Known sites for product tests by region / market (ordered by priority)
 
-Sites marked with ** are primary — start here. Product test sites provide expert evaluations (measurements, benchmarks, standardized testing) as opposed to user reviews or price aggregation.
+Sites marked with ** are primary — start here. Product test sites provide expert evaluations
+(measurements, benchmarks, standardized testing) as opposed to user reviews or price aggregation.
 
 ### Germany
 
-- **https://www.test.de** — Stiftung Warentest: gold standard for German product testing. Methodical, independent, covers everything from electronics to food to finance. Some content behind paywall.
-- **https://www.chip.de** — Comprehensive tech tests with benchmarks, ratings, and price comparisons. Good for monitors, laptops, smartphones, printers.
-- https://www.computerbase.de — German hardware review site with detailed benchmarks for CPUs, GPUs, mainboards, SSDs, and cooling
-- https://www.heise.de — Publisher of c't magazine. In-depth tech reviews with strong editorial standards. Premium content behind heise+ paywall.
-- https://www.notebookcheck.com — Deep-dive laptop and phone reviews with systematic display measurements, battery tests, and performance benchmarks
-- https://www.connect.de — Consumer electronics testing (TVs, audio, smartphones, navigation). Known for standardized test methodology.
-- https://www.golem.de — German tech news with thorough reviews of hardware, software, and gaming
-- https://www.pcgh.de — PC Games Hardware: gaming hardware reviews (GPUs, CPUs, gaming peripherals)
-- https://www.techstage.de — Consumer tech reviews from the Heise media group; focuses on practical testing
-- https://www.hardwareluxx.de — German overclocking/hardware community with detailed component reviews
-- https://www.autobild.de — Car and automotive product tests (tires, car accessories, dashcams, navigation)
-- https://www.digitalphoto.de — Photography equipment reviews (cameras, lenses, tripods, lighting)
-- https://www.fotomagazin.de — German photography magazine with camera and lens tests
-- https://www.stereoplay.de — Hi-fi and home theater equipment tests (speakers, amplifiers, headphones)
-- https://www.audio.de — Audio equipment reviews (headphones, speakers, DACs, streaming)
-- https://www.medizinfuchs.de — Medication and health product price comparison + information
-- https://www.etester.de — Consumer electronics with hands-on reviews and price comparisons
-- https://www.kuechengoetter.de — Kitchen appliance tests (ovens, fridges, cooktops, dishwashers)
-- https://www.sportaktiv.de — Sports and fitness equipment tests
-- https://www.testberichte.de — Aggregator of professional and user test reports across many categories
-- https://www.ciao.de — User review platform (similar to Ciao.com), good for supplementing expert reviews with real user experiences
-- https://www.vergleich.org — Comparison and test overviews, covers many consumer categories
+- **<https://www.test.de>** — Stiftung Warentest: gold standard for German product testing.
+  Methodical, independent, covers everything from electronics to food to finance. Some content
+  behind paywall.
+- **<https://www.chip.de>** — Comprehensive tech tests with benchmarks, ratings, and price
+  comparisons. Good for monitors, laptops, smartphones, printers.
+- <https://www.computerbase.de> — German hardware review site with detailed benchmarks for CPUs,
+  GPUs, mainboards, SSDs, and cooling
+- <https://www.heise.de> — Publisher of c't magazine. In-depth tech reviews with strong editorial
+  standards. Premium content behind heise+ paywall.
+- <https://www.notebookcheck.com> — Deep-dive laptop and phone reviews with systematic display
+  measurements, battery tests, and performance benchmarks
+- <https://www.connect.de> — Consumer electronics testing (TVs, audio, smartphones, navigation).
+  Known for standardized test methodology.
+- <https://www.golem.de> — German tech news with thorough reviews of hardware, software, and gaming
+- <https://www.pcgh.de> — PC Games Hardware: gaming hardware reviews (GPUs, CPUs, gaming
+  peripherals)
+- <https://www.techstage.de> — Consumer tech reviews from the Heise media group; focuses on
+  practical testing
+- <https://www.hardwareluxx.de> — German overclocking/hardware community with detailed component
+  reviews
+- <https://www.autobild.de> — Car and automotive product tests (tires, car accessories, dashcams,
+  navigation)
+- <https://www.digitalphoto.de> — Photography equipment reviews (cameras, lenses, tripods, lighting)
+- <https://www.fotomagazin.de> — German photography magazine with camera and lens tests
+- <https://www.stereoplay.de> — Hi-fi and home theater equipment tests (speakers, amplifiers,
+  headphones)
+- <https://www.audio.de> — Audio equipment reviews (headphones, speakers, DACs, streaming)
+- <https://www.medizinfuchs.de> — Medication and health product price comparison + information
+- <https://www.etester.de> — Consumer electronics with hands-on reviews and price comparisons
+- <https://www.kuechengoetter.de> — Kitchen appliance tests (ovens, fridges, cooktops, dishwashers)
+- <https://www.sportaktiv.de> — Sports and fitness equipment tests
+- <https://www.testberichte.de> — Aggregator of professional and user test reports across many
+  categories
+- <https://www.ciao.de> — User review platform (similar to Ciao.com), good for supplementing expert
+  reviews with real user experiences
+- <https://www.vergleich.org> — Comparison and test overviews, covers many consumer categories
 
 ### Austria
 
-- **https://www.konsument.at** — Verein für Konsumenteninformation (VKI). Austrian equivalent of Stiftung Warentest. Published tests across many product categories. Similar paywall model.
+- **<https://www.konsument.at>** — Verein für Konsumenteninformation (VKI). Austrian equivalent of
+  Stiftung Warentest. Published tests across many product categories. Similar paywall model.
 
 ### UK
 
-- **https://www.which.co.uk** — Which? is the UK's consumer association. Thorough independent product testing similar to Stiftung Warentest. Membership required for full results.
-- **https://www.trustedreviews.com** — UK-based product reviews (tech, home, lifestyle). Free, well-structured with pros/cons and scoring.
-- https://www.expertreviews.co.uk — UK review site covering tech, appliances, and household products
-- https://www.techradar.com — Large UK-based tech review site with extensive product coverage
-- https://www.tomshardware.com — Hardware reviews with benchmarks (GPUs, CPUs, SSDs, motherboards)
+- **<https://www.which.co.uk>** — Which? is the UK's consumer association. Thorough independent
+  product testing similar to Stiftung Warentest. Membership required for full results.
+- **<https://www.trustedreviews.com>** — UK-based product reviews (tech, home, lifestyle). Free,
+  well-structured with pros/cons and scoring.
+- <https://www.expertreviews.co.uk> — UK review site covering tech, appliances, and household
+  products
+- <https://www.techradar.com> — Large UK-based tech review site with extensive product coverage
+- <https://www.tomshardware.com> — Hardware reviews with benchmarks (GPUs, CPUs, SSDs, motherboards)
 
 ### Netherlands
 
-- **https://tweakers.net** — Tech site with both pricewatch (price comparison) and extensive product reviews including benchmarks
-- https://www.consumentenbond.nl — Dutch consumer association with independent product tests (membership model)
+- **<https://tweakers.net>** — Tech site with both pricewatch (price comparison) and extensive
+  product reviews including benchmarks
+- <https://www.consumentenbond.nl> — Dutch consumer association with independent product tests
+  (membership model)
 
 ### France
 
-- **https://www.quechoisir.org** — UFC-Que Choisir: French consumer association. Independent product testing like Stiftung Warentest.
-- https://www.lesnumeriques.com — French tech review site with systematic product testing
+- **<https://www.quechoisir.org>** — UFC-Que Choisir: French consumer association. Independent
+  product testing like Stiftung Warentest.
+- <https://www.lesnumeriques.com> — French tech review site with systematic product testing
 
 ### Belgium
 
-- **https://www.test-achats.be** — Belgian consumer association (Test Achats / Test Aankoop). Bilingual FR/NL product tests.
+- **<https://www.test-achats.be>** — Belgian consumer association (Test Achats / Test Aankoop).
+  Bilingual FR/NL product tests.
 
 ### Sweden / Nordics
 
-- https://www.prisjakt.se — Not just price comparison — includes aggregated review scores from multiple sources
-- https://www.radet.org — Swedish consumer association (Råd & Rön) with independent product tests
+- <https://www.prisjakt.se> — Not just price comparison — includes aggregated review scores from
+  multiple sources
+- <https://www.radet.org> — Swedish consumer association (Råd & Rön) with independent product tests
 
 ### Finland
 
-- https://www.vertaa.fi — Finnish comparison site with integrated review data
+- <https://www.vertaa.fi> — Finnish comparison site with integrated review data
 
 ### International / Multi-Region
 
-- **https://www.rtings.com** — Best-in-class for display testing: monitors, TVs, headphones. Scientific measurement-based reviews with consistent test methodology across all products.
-- **https://www.gsmarena.com** — The definitive phone specification database and review site. Phone battery life benchmarks, camera comparisons, display testing.
-- **https://www.dxomark.com** — Camera, audio, and display sensor testing. Frequently referenced by manufacturers. Use for objective camera quality comparison.
-- **https://www.techpowerup.com** — GPU database, power measurements, CPU/GPU benchmarks, SSD reviews. Excellent for comparing raw hardware performance.
-- https://www.tomshardware.com — Comprehensive hardware reviews and benchmarks. Strong GPU/CPU coverage.
-- https://www.techradar.com — Broad tech review site. Good for overview comparisons and "best of" lists.
-- https://www.pcmag.com — US-based but used internationally. Extensive product reviews across all tech categories.
-- https://www.anandtech.com — Deep-dive hardware analysis. Less frequent updates recently but existing bench database is valuable.
-- https://www.notebookcheck.com — International coverage (DE, US, CN editions). Systematic laptop/phone testing.
+- **<https://www.rtings.com>** — Best-in-class for display testing: monitors, TVs, headphones.
+  Scientific measurement-based reviews with consistent test methodology across all products.
+- **<https://www.gsmarena.com>** — The definitive phone specification database and review site.
+  Phone battery life benchmarks, camera comparisons, display testing.
+- **<https://www.dxomark.com>** — Camera, audio, and display sensor testing. Frequently referenced
+  by manufacturers. Use for objective camera quality comparison.
+- **<https://www.techpowerup.com>** — GPU database, power measurements, CPU/GPU benchmarks, SSD
+  reviews. Excellent for comparing raw hardware performance.
+- <https://www.tomshardware.com> — Comprehensive hardware reviews and benchmarks. Strong GPU/CPU
+  coverage.
+- <https://www.techradar.com> — Broad tech review site. Good for overview comparisons and "best of"
+  lists.
+- <https://www.pcmag.com> — US-based but used internationally. Extensive product reviews across all
+  tech categories.
+- <https://www.anandtech.com> — Deep-dive hardware analysis. Less frequent updates recently but
+  existing bench database is valuable.
+- <https://www.notebookcheck.com> — International coverage (DE, US, CN editions). Systematic
+  laptop/phone testing.
 
 ### Category-specific test sites
 
@@ -699,11 +785,13 @@ These specialize in one domain and often have better depth than generalists:
 
 ### Notes on product test technique
 
-- Start with independent consumer association tests (test.de, which.co.uk, quechoisir.org, konsument.at).
-  These are the most objective.
+- Start with independent consumer association tests (test.de, which.co.uk, quechoisir.org,
+  konsument.at). These are the most objective.
 - Always check the test date — product quality can change with manufacturing revisions
-- Cross-reference professional tests with user reviews (Amazon, Reddit, forums) to catch common defects that tests miss
+- Cross-reference professional tests with user reviews (Amazon, Reddit, forums) to catch common
+  defects that tests miss
 - German test sites (test.de, chip.de) often publish test summaries in PDF — search for them
-- Some test results are paywalled — search for summaries or alternative sources if you can't access the full report
+- Some test results are paywalled — search for summaries or alternative sources if you can't access
+  the full report
 - Look for standardized benchmarks (e.g., Geekbench, Cinebench, 3DMark, PCMark) in reviews
   for objective cross-product comparison
