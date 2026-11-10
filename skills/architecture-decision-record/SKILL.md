@@ -67,7 +67,7 @@ description: Write and maintain Architecture Decision Records (ADRs) following b
   - **Links** (optional)
 - Optional sections must only be included when they have meaningful content — omit them entirely otherwise
 - When reviewing an ADR, check whether other ADRs in the project are clearly related (same system component, direct dependency, or supersession chain); if the `Links` section is absent and such ADRs exist, report this as a low-priority finding and list which ADRs should be linked
-- When reviewing an ADR, read `.markdownlint.json` from the repo root (if present) and flag any violations of the configured rules that can be detected by reading the file content
+- When reviewing an ADR, check the project's Markdown linter configuration (e.g. `.rumdl.toml`, `.markdownlint.json`, or a comparable config file from tools like `rumdl` or `markdownlint`) from the repo root (if present) and flag any violations of the configured rules that can be detected by reading the file content
 - When producing an ADR from the template, do NOT copy any HTML comments or example placeholder content into the output — the template's inline comments identify exactly what must not be copied
 
 ### Updating or Revising an Existing ADR

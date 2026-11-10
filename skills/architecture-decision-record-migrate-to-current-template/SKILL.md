@@ -67,8 +67,10 @@ When invoked, follow these steps:
    template for that property — note: `to be defined` is already the correct template
    placeholder for `decision-makers` in WIP ADRs, so no replacement is needed when
    that value is already present
-7. Before writing the migrated ADR, read `.markdownlint.json` from the repo root
-   (if present) and enforce consistent list markers as configured
+7. Before writing the migrated ADR, check the project's Markdown linter
+   configuration from the repo root (if present; e.g. `.rumdl.toml`,
+   `.markdownlint.json`, or a comparable config file from tools like `rumdl` or
+   `markdownlint`) and enforce consistent list markers as configured
 8. Write the migrated content to the file, overwriting the original
 9. Invoke the `architecture-decision-record-review` skill targeting only the migrated ADR
    - fix any structural/format findings before reporting to the user

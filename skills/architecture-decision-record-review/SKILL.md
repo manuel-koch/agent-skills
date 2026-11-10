@@ -35,8 +35,10 @@ When invoked, follow these steps:
 2. Read and parse each ADR to understand its status, reasoning and decision outcome
 3. For each targeted ADR: apply all structural and quality rules from the
    `architecture-decision-record` skill — report any violations as findings
-4. Read `.markdownlint.json` from the repo root (if present) and flag any
-   violations of the configured rules that can be detected by reading the file content
+4. Check the project's Markdown linter configuration from the repo root (if
+   present; e.g. `.rumdl.toml`, `.markdownlint.json`, or a comparable config
+   file from tools like `rumdl` or `markdownlint`) and flag any violations of the
+   configured rules that can be detected by reading the file content
 5. Additionally check cross-ADR consistency for each targeted ADR:
    - **accepted**: flag contradictions or mutually exclusive approaches with
      other accepted ADRs
