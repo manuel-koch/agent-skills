@@ -20,14 +20,29 @@ reading the original input file or this conversation.
 - [ ] Concrete starting point (first file to open, first test to run)
 - [ ] A new agent could begin implementing without reading the original input
 
+**Planning gate:** before drafting the **Implementation Plan** (step 3), run step 2 to verify
+pre-plan topics. While any topic is marked `[blocking]` (see step 2), do not draft the plan;
+run the *Resolving pre-plan topics* loop below first. If `[blocking]` topics surface during
+later steps, add them and apply the same loop.
+
 1. Analyze the input/requirements  
    → Output: **Context** (goal, motivation, acceptance criteria, constraints, background).
-2. Research the current project  
+2. Verify pre-plan topics — enumerate every topic that must be settled before a coherent plan
+   can be drafted: missing decisions, missing resources/credentials, unknown data formats or field
+   names or field data types, unresolved requirement conflicts, security or compliance constraints,
+   contradicting invariants.  
+   → Output: **Open Questions** and/or **Consistency Issues** entries (triage below).
+   - For each topic, attempt resolution with agent research first, then escalate:
+     - Resolvable by research → fold the fact into **Implementation Hints** (no entry needed).
+     - Needs a user decision or external input → **Open Questions**, prefixed `[blocking]`.
+     - Contradiction with an existing invariant → **Consistency Issues**, prefixed `[high]`.
+     - Fundamentally impossible regardless of resources → note in **Context** and halt planning.
+3. Research the current project  
    → Output: **Context** (dependencies, contracts) and **Implementation Hints** (grounded facts).
    - Search for related info — referenced files, configs, docs, tests, existing patterns, and
      project conventions (`AGENTS.md` first when present, otherwise `CLAUDE.md`; also
-     `CONTRIBUTING.md`, `CHANGELOG.md`, `CONTEXT.md`, architecture decision records, coding guidelines,
-     style guides) relevant to the change.
+     `CONTRIBUTING.md`, `CHANGELOG.md`, `CONTEXT.md`, architecture decision records, coding
+     guidelines, style guides) relevant to the change.
    - Identify existing documentation that describes the components or behavior being changed (e.g.
      README, architecture/API docs, ADRs, changelogs, user guides) so it can be tracked for updates
      in the plan.
@@ -37,12 +52,12 @@ reading the original input file or this conversation.
      - Missing resource that could be obtained → **Open Questions**.
      - Contradiction with an existing invariant → **Consistency Issues** (prefix `[high]`).
      - Fundamentally impossible regardless of resources → note in **Context** and halt planning.
-3. Create a structured plan how the change can be implemented, including necessary changes to
+4. Create a structured plan how the change can be implemented, including necessary changes to
    tests and to existing documentation that describes the affected components  
    → Output: **Implementation Plan**.
-4. Suggest improvements to the input/requirements  
+5. Suggest improvements to the input/requirements  
    → Output: **Proposed Improvements** (optional — omit section if none).
-5. Analyze the plan itself for consistency: check whether any step, as written, would introduce or
+6. Analyze the plan itself for consistency: check whether any step, as written, would introduce or
    silently rely on a contradiction  
    → Output: **Consistency Issues** (optional — omit section if none).  
    "Consistency issues" are contradictions or conflicts with existing invariants that the planned
@@ -50,10 +65,12 @@ reading the original input file or this conversation.
    implementation, or `[low]` if it can be resolved during implementation. Keep them distinct from
    the "Implementation Plan" (concrete steps) and "Implementation Hints" (grounded facts) and
    non-redundant with both. See the Output Format template for what counts as a consistency issue.
-6. Note open questions, unclear requirements, implications for security or topics that need
-   clarification before implementation and/or planning can start  
-   → Output: **Open Questions** (optional — omit section if none remain).
-7. Write the output to a markdown sidecar file  
+7. Note remaining open questions, unclear requirements, implications for security or topics
+   that need clarification before implementation  
+   → Output: **Open Questions** (optional — omit section if none remain).  
+   Topics that block planning are triaged in step 2; this step collects only what surfaced
+   while drafting or analyzing the plan.
+8. Write the output to a markdown sidecar file  
    → Output: the assembled sidecar file.  
    The sidecar must contain every section produced above, assembled in the order shown below.
    Before writing, ensure the **Implementation Plan** steps are numbered consecutively from 1
@@ -82,11 +99,33 @@ apply steps 1–3 in one update. Additionally, if after resolution no questions 
 step 4:
 
 1. Remove the question entry from the **Open Questions** section.
-2. Incorporate the answer as a concrete note in **Implementation Hints**.
+2. Incorporate the answer as a concrete note in **Implementation Hints**,
+   a concrete task in **Implementation Plan**, or as a **Context** constraint when it
+   changes the goal or acceptance criteria.
 3. Update any affected steps in the **Implementation Plan**, renumbering if steps were
    inserted or removed so numbering stays consecutive (see renumbering rule below).
 4. Remove the **entire** **Open Questions** section, including its heading
    and all surrounding blank lines.
+
+## Resolving pre-plan topics
+
+Pre-plan topics are the `[blocking]` entries produced by workflow step 2 (*Verify pre-plan
+topics*). They gate **planning**, not just implementation: while any `[blocking]` entry
+remains, do not draft the **Implementation Plan**.
+
+Whenever a `[blocking]` topic is resolved (whether answered by the user or through agent
+research), apply steps 1–3 in one update. Additionally, if after resolution no `[blocking]`
+topics remain, also apply step 4:
+
+1. Remove the entry from **Open Questions** (or **Consistency Issues**, depending on which
+   section holds it).
+2. Incorporate the answer as a concrete note in **Implementation Hints**,
+   a concrete task in **Implementation Plan**, or as a **Context** constraint when it
+   changes the goal or acceptance criteria.
+3. If the **Implementation Plan** was already drafted, update any affected steps, renumbering
+   if steps were inserted or removed (see renumbering rule below).
+4. Resume the workflow at step 3 (*Research the current project*) and draft the plan with all
+   `[blocking]` topics settled.
 
 ## Output format
 
@@ -157,7 +196,7 @@ When nothing genuinely conflicts, OMIT the entire section.
 ## Implementation Hints
 
 <!--
-Concrete, grounded guidance derived from codebase research (step 2) and resolved open
+Concrete, grounded guidance derived from codebase research (step 3) and resolved open
 questions (when the answer is just information and not a task). This section must contain
 facts only — never actionable steps.
 
@@ -170,7 +209,10 @@ facts only — never actionable steps.
 ## Open Questions <!-- OPTIONAL — omit section entirely if none remain -->
 
 <!--
-Questions that must be resolved before implementation and/or planning can start.
+Questions that must be resolved before implementation can start. Entries prefixed
+`[blocking]` gate the planning phase itself (see workflow step 2 and the
+"Resolving pre-plan topics" protocol) and must be cleared before the
+Implementation Plan is drafted.
 Follow the "Resolving open questions" protocol above when closing each one.
 -->
 ```
