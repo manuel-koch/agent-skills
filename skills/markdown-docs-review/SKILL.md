@@ -109,7 +109,7 @@ Use `Glob` with `**/*.md` to get the full list of markdown files in the reposito
   rather than authored content (e.g. `apps-rendered/`, `dist/`, `out/`)
 * VCS metadata and ignored paths: `.git/`; also read `.gitignore` if present and exclude any
   directories it names — they are untracked by design and not authored documentation content
-* Tooling configuration directories: `.agents/`, `.claude/`  (and all their descendants), and any
+* Tooling configuration directories: `.agents/`, `.claude/` (and all their descendants), and any
   other hidden directories at the repo root that contain skill, agent, or tool definitions rather
   than project documentation
 
