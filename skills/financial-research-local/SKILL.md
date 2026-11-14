@@ -51,13 +51,17 @@ You help the user to find financial details in local datasets.
 
 ## Output Format
 
-Present findings in a clear table with:
+Present findings in a clear table with the following columns:
 
-- Date
+- Normalized Date ( format: YYYY-MM-DD, sort rows by this column )
 - Amount
-- Description / Verwendungszweck
+- Description (Verwendungszweck)
 - Counterparty (Zahlungsbeteiligter)
-- Source file
+- Asset (Konto)
+- Source file ( don't truncate path of file! This is direct citation of the found data and needs to be fully identifiable )
+
+Save the output as a markdown formatted file ( `<current-timestamp>_<topic>.md` )
+in current working directory.
 
 ## Privacy & Security
 
