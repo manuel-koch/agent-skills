@@ -48,6 +48,7 @@ structured schema) are confirmed during Step 1c when the file is actually read:
 | Named `README.md` at repo root | **Entry point** — developer orientation, prerequisites, index of other docs |
 | Named `AGENTS.md` at repo root | **AI agent context** — information exclusively useful for AI agents operating in this repo; links out to other docs rather than duplicating them |
 | Named `CLAUDE.md` at repo root (only when no `AGENTS.md` exists at the repo root; `AGENTS.md` takes precedence) | **AI agent context** — same role as `AGENTS.md` |
+| Named `CONTEXT.md` or `GLOSSARY.md` | **Terminology reference** — these names are synonyms for a summary of project terms to use or to avoid; it may be generated or maintained by a dedicated domain-language or terminology skill |
 | In a directory named `runbooks/`, `how-to/`, `guides/`, `playbooks/`, or similar | **Operational guide** — task-oriented, one topic per file |
 | In a directory named `docs/`, `documentation/`, `references/`, `architecture/`, or similar (but not a runbooks subdirectory) | **Reference file** — single source of truth for a specific topic; not a step-by-step guide |
 | Follows a structured schema (ADR status/context/decision fields, RFC template, CHANGELOG sections, etc.) | **Skill-governed file** — see Step 1c |
@@ -84,9 +85,11 @@ When it is unclear which file should own a piece of information, apply these rul
 
 2. **What is its nature?** Place it in the most appropriate existing file:
    * Step-by-step procedure for humans → **operational guide / runbook**
-   * Stable reference material (conventions, architecture, naming rules, data models) →
-     **reference file**
-   * Entry-point orientation, prerequisites, or project index → **`README.md`**
+   * Stable reference material (conventions, architecture, naming rules, terminology, data models) →
+     **reference file**. `CONTEXT.md` and `GLOSSARY.md` are synonyms for a project-terminology
+     summary; when either is present, check for a dedicated skill that owns the terminology topic
+     and follow its guidance for changes to that content.
+   * Entry-point orientation, prerequisites, or project index → `README.md`
    * Anything else (glossary, decision log, meeting notes, changelog without a governing skill,
      etc.) → **reference file** in the most appropriate existing reference directory.
    If no existing file covers the topic, create a new file in the location that matches the

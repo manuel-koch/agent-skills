@@ -39,10 +39,14 @@ later steps, add them and apply the same loop.
      - Fundamentally impossible regardless of resources → note in **Context** and halt planning.
 3. Research the current project  
    → Output: **Context** (dependencies, contracts) and **Implementation Hints** (grounded facts).
-   - Search for related info — referenced files, configs, docs, tests, existing patterns, and
-     project conventions (`AGENTS.md` first when present, otherwise `CLAUDE.md`; also
-     `CONTRIBUTING.md`, `CHANGELOG.md`, `CONTEXT.md`, architecture decision records, coding
-     guidelines, style guides) relevant to the change.
+   - Search for related information relevant to the change, including referenced files,
+     configurations, documentation, tests, existing patterns, and project conventions. Check:
+     - `AGENTS.md` first when present; otherwise check `CLAUDE.md`.
+     - `CONTRIBUTING.md`, `CHANGELOG.md`, architecture decision records, coding guidelines, and
+       style guides.
+     - `CONTEXT.md` or `GLOSSARY.md`. These two filenames are synonyms; either may contain the
+       project's summary of terms to use, usually generated or maintained by a domain-language
+       skill.
    - Identify existing documentation that describes the components or behavior being changed (e.g.
      README, architecture/API docs, ADRs, changelogs, user guides) so it can be tracked for updates
      in the plan.
